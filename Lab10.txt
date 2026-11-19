@@ -1,0 +1,84 @@
+:::::::::::::::::::::::::::::::::::::::::1RA PARTE LAB10::::::::::::::::::::::::::::::
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script src="script.js"></script>
+</body>
+</html>
+
+console.log("1.Pide los datos....");
+
+fetch("https://pokeapi.co/api/v2/pokemon/pikachu").then(function(response){
+    console.log("3.!Los datos llegaron finalmente");
+});
+
+console.log("2.sigo trabajando sin esperar");
+
+
+:::::::::::::::::::::::::::::::::::::::::::: 2da Parte de la Clsse:::::::::::::::::::::::::::::
+fetch("https://pokeapi.co/api/v2/pokemon/pikachu").then(function(response){
+    return response.json();
+}).then(function(data){
+    console.log("Nombre plano de pokemon", data.name);
+console.log("Ruta oculta de la imagen", data.sprites.front_default);
+
+
+})
+
+::::::::::::::::::::::::::::::::::::::::3era Parte Clase::::::::::::::::::::::::::::
+
+
+fetch("https://pokeapi.co/api/v2/pokemon/pikachu").then(function(response){
+     return response.json();
+}).then(function(data){
+    console.log("Nombre plano de pikachu", data.name)
+    console.log("Ruta oculta de la imagen", data.sprites.front_default);
+    console.log("Estructura de tipos", data.types);
+})
+
+
+
+
+:::::::::::::::::::::::::::::::::::::::::::: Ejemplo alterno de clase combina la 1er y 2do ejemplo::::::::::::
+
+/*
+console.log("1.Pido los datos...");
+
+fetch("https://pokeapi.co/api/v2/pokemon/pikachu").then ((result)=>{
+                      return result.json();
+})
+.then((data)=>{
+    console.log(`Nombre plano de pikachu:', ${data.name}`);
+    console.log(`Imagen oculta del pokemon: ${data.sprites.front_default}`);
+    console.log('Estructura de tipos', data.types);    
+
+})
+console.log("2.sigo trabagando sin esperar");
+
+*/
+:::::::::::::::::
+function adaptarPokemon(data){
+   return {
+             nombre: data.name,
+             imagen: data.sprites?.front_default ?? "https://via.placeholder.com/96?text=?",
+             tipos: data.type.map( t => t.type.name)
+
+             }
+}
+
+
+let pokedex = [];
+const nombres = ["bulbasaur","charmander","squirtle","pikachu","jigglypuff","gengar"];
+
+
+
+contenedor.innerHTML = `<p class="col-span-full text-center text-slate-500">`Cargando Pokedex de la muestra</p>
